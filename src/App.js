@@ -8,6 +8,7 @@ const customer = {
   'gender': '남자',
   'job': '대학생'
 }
+
 /*
 function App() {
   return (
