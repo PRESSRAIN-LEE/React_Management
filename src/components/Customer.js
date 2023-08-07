@@ -1,5 +1,6 @@
 import React from 'react';
 
+/*
 class Customer extends React.Component{
 	render(){
 		//props로 진행
@@ -19,9 +20,28 @@ class Customer extends React.Component{
 		);
 	}
 }
+*/
+
+function Customer(props){
+	//props로 진행
+	return(
+		<div>
+			<CustomerProfile
+				id={props.id}
+				image={props.image}
+				name={props.name}
+				/>
+			<CustomerInfo
+				birthday = {props.birthday}
+				gender = {props.gender}
+				job = {props.job}
+			/>
+		</div>
+	);
+}
 
 //구조화
-class CustomerProfile extends React.Component{
+/*class CustomerProfile extends React.Component{
 	render(){
 		return(
 			<div>
@@ -30,6 +50,14 @@ class CustomerProfile extends React.Component{
 			</div>
 		);
 	}
+}*/
+function CustomerProfile (props){
+	return(
+		<div>
+			<img src={props.image} alt='profile'/>
+			<h2>{props.name} ({props.id})</h2>
+		</div>
+	);
 }
 
 class CustomerInfo extends React.Component{
