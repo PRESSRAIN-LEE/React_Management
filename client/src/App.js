@@ -2,41 +2,13 @@ import React, { Component } from 'react';
 import Customer from './components/Customer';
 import './App.css';
 
-//배열
-const customers = [
-  {
-    'id': 1,
-    'image': 'https://placekitten.com/64/64',
-    'name': '홍길동',
-    'birthday': '20000101',
-    'gender': '남자',
-    'job': '대학생'
-  },
-  {
-    'id': 2,
-    'image': 'https://picsum.photos/64/64',
-    'name': '김길동',
-    'birthday': '20010101',
-    'gender': '남자',
-    'job': '직장인'
-  },
-  {
-    'id': 3,
-    'image': 'https://loremflickr.com/64/64',
-    'name': '이길동',
-    'birthday': '20020101',
-    'gender': '여자',
-    'job': '개발자'
-  }
-]
-
-
+/*
 function App() {
   return (
       <div>
         {
           //map을 이용해서 for문을 만든다(python과 동일)
-          customers.map(c => {
+          this.state.customers.map(c => {
             return(
               <Customer
                 key = {c.id}    //map을 사용하면 key값은 필수(unique)
@@ -53,16 +25,32 @@ function App() {
       </div>
     );
 }
+*/
 
-
-/*
 class App extends Component {
+  state = {
+    customers: ""
+  }
+
+  componentDidMount() {
+    this.callApi()
+      .then(res => this.setState({customers: res}))
+      .catch(err => console.log(err));
+  }
+
+  callApi = async() => {
+    const response = await fetch('/api/customers');
+    const body = await response.json();
+    return body;
+  }
+
   render(){
     return (
       <div>
         {
           //map을 이용해서 for문을 만든다(python과 동일)
-          customers.map(c => {
+          //3항 연산자 사용
+          this.state.customers ? this.state.customers.map(c => {
             return(
               <Customer
                 key = {c.id}    //map을 사용하면 key값은 필수(unique)
@@ -75,11 +63,10 @@ class App extends Component {
               />
             );
           })
-        }
+        : ""}
       </div>
     );
   }
 }
-*/
 
 export default App;
