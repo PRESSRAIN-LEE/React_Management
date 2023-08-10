@@ -23,10 +23,15 @@ connection.connect();		//실제 연결
 
 app.get('/api/customers', (req, res) => {
 	connection.query(
-		"SELECT * FROM customer",
+		"SELECT * FROM CUSTOMER",
 		(err, rows, fields) => {	//rows에 디비내용을 저장
-			//console.log(fields);
-			res.send(rows);
+			if(err){
+				console.log("DB 실패");
+				// console.log(err);
+			}else{
+				//console.log(fields);
+				res.send(rows);
+			};
 		}
 	);
 });
