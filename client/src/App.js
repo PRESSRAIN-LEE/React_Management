@@ -70,6 +70,7 @@ class App extends Component {
           this.state.customers ? this.state.customers.map(c => {
             return(
               <Customer
+                stateRefresh={this.stateRefresh}
                 key = {c.id}    //map을 사용하면 key값은 필수(unique)
                 id = {c.id}
                 image = {c.image}
