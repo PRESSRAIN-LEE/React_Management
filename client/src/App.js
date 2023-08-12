@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Customer from './components/Customer';
+import CustomerAdd from './components/CustomerAdd';
 import './App.css';
 
 /*
@@ -28,8 +29,24 @@ function App() {
 */
 
 class App extends Component {
-  state = {
-    customers: ""
+  //생성자
+  constructor(props){
+    super(props);
+    this.state = {
+      customers: '',
+      completed: 0
+    }
+  }
+
+  stateRefresh = () => {
+    //state를 초기화 시킴
+    this.setState({
+      customers: '',
+      completed: 0
+    });
+    this.callApi()
+      .then(res => this.setState({customers: res}))
+      .catch(err => console.log(err));
   }
 
   componentDidMount() {
@@ -64,6 +81,8 @@ class App extends Component {
             );
           })
         : ""}
+
+        <CustomerAdd stateRefresh={this.stateRefresh} />
       </div>
     );
   }
