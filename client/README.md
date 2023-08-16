@@ -1,6 +1,12 @@
 # Management System
 본 프로젝트는 Reat강의를 수강하면서 작성한 고객관리 시스템(Management System)입니다.
+
+`- 동영상`
 https://www.youtube.com/watch?v=_yEH9mczm3g&list=PLRx0vPvlEmdD1pSqKZiTihy5rplxecNpz&index=1
+
+
+`- git`
+https://github.com/ndb796/React-Management-Tutorial
 
 # css
 
